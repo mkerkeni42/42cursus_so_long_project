@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   print_hexa_low.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/02 13:38:01 by mkerkeni         ###   ########.fr       */
+/*   Created: 2022/12/04 09:58:39 by mkerkeni          #+#    #+#             */
+/*   Updated: 2022/12/04 10:34:13 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "ft_printf.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <mlx.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "Libft/libft.h"
+int	print_hexa_low(unsigned long long nb, int count)
+{
+	char	*base;
 
-int main(void);
-
-int parse_map(int fd);
-
-#endif
+	base = "0123456789abcdef";
+	ft_putnbr_hexa(nb, base);
+	while (nb >= 16)
+	{
+		nb = nb / 16;
+		count++;
+	}
+	count++;
+	return (count);
+}

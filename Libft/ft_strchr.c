@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/02 13:38:01 by mkerkeni         ###   ########.fr       */
+/*   Created: 2022/11/10 18:45:07 by mkerkeni          #+#    #+#             */
+/*   Updated: 2022/11/27 12:15:23 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <mlx.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "Libft/libft.h"
+char	*ft_strchr(const char *s, int c)
+{
+	int		i;
+	char	*ptr;
+	size_t	s_len;
 
-int main(void);
-
-int parse_map(int fd);
-
-#endif
+	i = 0;
+	ptr = (char *)s;
+	s_len = ft_strlen(s);
+	while (ptr[i])
+	{
+		if (ptr[i] == (char)c)
+			return (ptr + i);
+		i++;
+	}
+	if (c == '\0')
+		return (ptr + s_len);
+	return (0);
+}

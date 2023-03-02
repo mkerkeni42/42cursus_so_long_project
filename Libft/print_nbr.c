@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   print_nbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/02 13:38:01 by mkerkeni         ###   ########.fr       */
+/*   Created: 2022/12/04 09:33:28 by mkerkeni          #+#    #+#             */
+/*   Updated: 2022/12/04 11:46:07 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "ft_printf.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <mlx.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "Libft/libft.h"
-
-int main(void);
-
-int parse_map(int fd);
-
-#endif
+int	print_nbr(int nb, int count)
+{
+	ft_putnbr_fd(nb, 1);
+	if (nb == -2147483648)
+		count += 9;
+	if (nb < 0)
+	{
+		nb *= -1;
+		count++;
+	}	
+	while (nb >= 10)
+	{
+		nb = nb / 10;
+		count++;
+	}
+	count++;
+	return (count);
+}

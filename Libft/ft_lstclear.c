@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/02 13:38:01 by mkerkeni         ###   ########.fr       */
+/*   Created: 2022/11/27 12:47:31 by mkerkeni          #+#    #+#             */
+/*   Updated: 2022/11/27 16:08:24 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <mlx.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "Libft/libft.h"
+void	ft_lstclear(t_list **lst, void (*del) (void *))
+{
+	t_list	*current;
 
-int main(void);
-
-int parse_map(int fd);
-
-#endif
+	if (lst && del)
+	{
+		while (lst && *lst)
+		{
+			current = (*lst)->next;
+			del((*lst)->content);
+			free(*lst);
+			*lst = current;
+		}
+		*lst = NULL;
+	}
+}

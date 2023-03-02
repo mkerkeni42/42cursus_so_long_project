@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/02 13:38:01 by mkerkeni         ###   ########.fr       */
+/*   Created: 2022/11/27 08:54:39 by mkerkeni          #+#    #+#             */
+/*   Updated: 2022/11/27 12:24:43 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <mlx.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "Libft/libft.h"
+int	ft_lstsize(t_list *lst)
+{
+	int		i;
+	t_list	*current_lst;
 
-int main(void);
-
-int parse_map(int fd);
-
-#endif
+	if (lst == NULL)
+		return (0);
+	i = 0;
+	current_lst = lst->next;
+	while (current_lst != NULL)
+	{
+		i++;
+		current_lst = current_lst->next;
+	}
+	return (i + 1);
+}

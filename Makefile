@@ -6,32 +6,33 @@
 #    By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 12:41:15 by mkerkeni          #+#    #+#              #
-#    Updated: 2023/02/22 12:41:44 by mkerkeni         ###   ########.fr        #
+#    Updated: 2023/03/02 13:37:44 by mkerkeni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-LIBFT_PRINTF = ft_printf/
+LIBFT = Libft/
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-I /usr/local/lib -lmlx -framework OpenGL \
+-framework AppKit \
 
-SRCS = 
+SRCS = main.c parse_map.c \
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFT_PRINTF)
-	$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBFT_PRINTF)libftprintf.a
+	$(MAKE) -C $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBFT)libft.a
 
 clean:
 	rm -f $(OBJS)
-	$(MAKE) clean -C $(LIBFT_PRINTF)
+	$(MAKE) clean -C $(LIBFT)
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f ft_printf/libftprintf.a
+	rm -f Libft/libft.a
 
 re: fclean all
 

@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/02 13:38:01 by mkerkeni         ###   ########.fr       */
+/*   Created: 2022/11/29 14:13:47 by mkerkeni          #+#    #+#             */
+/*   Updated: 2023/02/23 13:23:51 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <mlx.h>
 # include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "Libft/libft.h"
+# include <stdarg.h>
+# include "libft.h"
 
-int main(void);
-
-int parse_map(int fd);
+int		ft_printf(const char *s, ...);
+void	ft_putnbr_unsigned_int(unsigned int nb);
+int		print_str(char *str, int count);
+int		print_nbr(int nb, int count);
+void	ft_putnbr_hexa(unsigned long long nb, char *hexa);
+int		print_hexa_low(unsigned long long nb, int count);
+int		print_hexa_up(unsigned long long nb, int count);
 
 #endif
