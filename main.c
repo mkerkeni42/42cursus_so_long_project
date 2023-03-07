@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:34:01 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/02 13:41:14 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:22:04 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,29 @@ void	ft_putchar(char c)
 	printf("%d\n", key);
 	return (0);
 }*/
+static void	check_file_name(char *file_name)
+{
+	if (!ft_strnstr(file_name, ".ber", 4))
+	{
+		printf("retour de strnstr = %p\n", ft_strnstr(file_name, ".ber", 4));
+		printf("passed here\n");
+		handle_error(10);
+	}
+}
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	//void	*mlx_ptr;
 	//void	*win_ptr;
-	int		fd;
-	
-	fd = open("map.ber", O_RDONLY);
-	if (fd == -1)
-		return (EXIT_FAILURE);
-	if (parse_map(fd) == 0)
-	{
-		close(fd);
-		return(EXIT_FAILURE);
-	}
-	printf("check is ok");
+
+	if (ac != 2)
+		handle_error(9);
+	check_file_name(av[1]);
+	get_map(av[1]);
 	//mlx_ptr = mlx_init();
 	//win_ptr = mlx_new_window(mlx_ptr, 500, 500, "so long");
 	//mlx_key_hook(win_ptr, deal_key, (void *)0);
 	//mlx_loop(mlx_ptr);
+	//system("leaks so_long");
 	return (EXIT_SUCCESS);
 }
