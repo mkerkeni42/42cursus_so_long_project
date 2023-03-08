@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 11:16:48 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/07 16:01:43 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:35:45 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void	get_size_array(t_map *map, char *file_name)
 	}
 }
 
-void	get_map(char *file_name)
+void	parse_map(char *file_name)
 {
 	t_map	*map;
 
@@ -105,4 +105,5 @@ void	get_map(char *file_name)
 	check_collectible(map);
 	check_start(map);
 	check_exit(map);
+	check_path(map);
 }

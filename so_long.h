@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/07 15:42:21 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:35:38 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_map {
 
 int		main(int ac, char **av);
 
-void	get_map(char *av);
+void	parse_map(char *av);
 
 void	check_rectangle(char *line, size_t len);
 void	check_map_closed(t_map *map);
@@ -42,5 +42,8 @@ void	check_exit(t_map *map);
 
 void	handle_error(int x);
 int		count_char(char *str, char c);
+void	print_map(char **map);
+
+void	check_path(t_map *map);
 
 #endif

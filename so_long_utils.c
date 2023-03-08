@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:07:39 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/07 16:15:29 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:32:59 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	handle_error(int x)
 {
-	write(2, "Error: ", 7);
 	if (x == 0)
 		write(2, "Failed to get the map\n", 22);
 	else if (x == 1)
@@ -37,6 +36,8 @@ void	handle_error(int x)
 		write(2, "Wrong number of arguments !\n", 28);
 	else if (x == 10)
 		write(2, "Your argument has a wrong extension !\n", 38);
+	else if (x == 11)
+		write(2, "Your path is not practicable !\n", 31);
 	exit(EXIT_FAILURE);
 }
 
@@ -56,4 +57,24 @@ int	count_char(char	*str, char c)
 		i++;
 	}
 	return (count);
+}
+
+void	print_map(char **map)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			write(1, &map[y][x], 1);
+			x++;
+		}
+		write(1, "\n", 1);
+		y++;
+	}
 }
