@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:07:39 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/08 15:32:59 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/09 13:58:47 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	handle_error(int x)
 	else if (x == 6)
 		write(2, "There is no collectible in your map !\n", 38);
 	else if (x == 7)
-		write(2, "You map hasn't one start position !\n", 33);
+		write(2, "You map hasn't one start position !\n", 36);
 	else if (x == 8)
-		write(2, "You map hasn't one exit !\n", 33);
+		write(2, "You map hasn't one exit !\n", 26);
 	else if (x == 9)
 		write(2, "Wrong number of arguments !\n", 28);
 	else if (x == 10)
