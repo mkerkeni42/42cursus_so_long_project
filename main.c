@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:34:01 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/10 15:57:17 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:28:03 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,59 +17,127 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-/*int	deal_key(int key, void *param)
+static void	get_position(t_game	*game, char c)
 {
-	if (key == 13) // haut
+	int	y;
+	int	x;
+	
+	x = 0;
+	y = 0;
+	game->sprite_pos.x = x;
+	game->sprite_pos.y = y;
+	while (game->map->map[y])
 	{
-		
+		x = 0;
+		while (game->map->map[y][x])
+		{
+			if (game->map->map[y][x] == c)
+			{
+				game->sprite_pos.x = x;
+				game->sprite_pos.y = y;
+			}
+			x++;
+		}
+		y++;
 	}
-	else if (key == 1) // bas
+}
+
+int	deal_key(int key, t_game *game)
+{
+	
+	get_position(game, 'P');
+	if (key == 1 && game->map->map[game->sprite_pos.y + 1][game->sprite_pos.x] != '1')
 	{
-		
+		game->sprite.path = "so_long_images_xpm/yellow_square.xpm";
+		game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
+			&game->sprite.width, &game->sprite.height);
+		mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
+			game->sprite.width * game->sprite_pos.x, game->sprite.width * game->sprite_pos.y);
+		game->map->map[game->sprite_pos.y][game->sprite_pos.x] = 0;
+		game->map->map[game->sprite_pos.y + 1][game->sprite_pos.x] = 'P';
+		game->sprite.path = "so_long_images_xpm/emir_front.xpm";
+		game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
+			&game->sprite.width, &game->sprite.height);
+		mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
+			game->sprite.width * game->sprite_pos.x, game->sprite.width * (game->sprite_pos.y + 1));
 	}
-	else if (key == 0) // gauche
+	else if (key == 13 && game->map->map[game->sprite_pos.y - 1][game->sprite_pos.x] != '1')
 	{
-		
+		game->sprite.path = "so_long_images_xpm/yellow_square.xpm";
+		game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
+			&game->sprite.width, &game->sprite.height);
+		mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
+			game->sprite.width * game->sprite_pos.x, game->sprite.width * game->sprite_pos.y);
+		game->map->map[game->sprite_pos.y][game->sprite_pos.x] = 0;
+		game->map->map[game->sprite_pos.y - 1][game->sprite_pos.x] = 'P';
+		game->sprite.path = "so_long_images_xpm/emir_front.xpm";
+		game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
+			&game->sprite.width, &game->sprite.height);
+		mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
+			game->sprite.width * game->sprite_pos.x, game->sprite.width * (game->sprite_pos.y - 1));
 	}
-	else if (key == 2) // droite
+	else if (key == 0 && game->map->map[game->sprite_pos.y][game->sprite_pos.x - 1] != '1')
 	{
-		
+		game->sprite.path = "so_long_images_xpm/yellow_square.xpm";
+		game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
+			&game->sprite.width, &game->sprite.height);
+		mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
+			game->sprite.width * game->sprite_pos.x, game->sprite.width * game->sprite_pos.y);
+		game->map->map[game->sprite_pos.y][game->sprite_pos.x] = 0;
+		game->map->map[game->sprite_pos.y][game->sprite_pos.x - 1] = 'P';
+		game->sprite.path = "so_long_images_xpm/sprite_left1.xpm";
+		game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
+			&game->sprite.width, &game->sprite.height);
+		mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
+			game->sprite.width * (game->sprite_pos.x - 1), game->sprite.width * game->sprite_pos.y);
+	}
+	else if (key == 2 && game->map->map[game->sprite_pos.y][game->sprite_pos.x + 1] != '1')
+	{
+		game->sprite.path = "so_long_images_xpm/yellow_square.xpm";
+		game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
+			&game->sprite.width, &game->sprite.height);
+		mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
+			game->sprite.width * game->sprite_pos.x, game->sprite.width * game->sprite_pos.y);
+		game->map->map[game->sprite_pos.y][game->sprite_pos.x] = 0;
+		game->map->map[game->sprite_pos.y][game->sprite_pos.x + 1] = 'P';
+		game->sprite.path = "so_long_images_xpm/sprite_right2.xpm";
+		game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
+			&game->sprite.width, &game->sprite.height);
+		mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
+			game->sprite.width * (game->sprite_pos.x + 1), game->sprite.width * game->sprite_pos.y);
 	}
 	printf("%d\n", key);
 	return (0);
-}*/
+}
+
 static void	check_file_name(char *file_name)
 {
 	if (!ft_strnstr(file_name, ".ber", ft_strlen(file_name)))
 		handle_error(10);
 }
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
 int	main(int ac, char **av)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_data	img;
+	t_game	game;
+	t_map	*map;
 
 	if (ac != 2)
 		handle_error(9);
 	check_file_name(av[1]);
-	parse_map(av[1]);
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1920, 1800, "so long");
-	img.img = mlx_new_image(mlx_ptr, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	my_mlx_pixel_put(&img, 50, 50, 0x00FF0000);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
-	//mlx_key_hook(win_ptr, deal_key, (void *)0);
-	mlx_loop(mlx_ptr);
+	map = parse_map(av[1]);
+	game.mlx = mlx_init();
+	game.size_win.x = map->tot_col * 64;
+	game.size_win.y = map->tot_row * 64;
+	game.win = mlx_new_window(game.mlx, game.size_win.x, \
+		game.size_win.y, "so long");
+	set_background(game, map->map);
+	set_walls(game, map->map);
+	set_end(game, map->map);
+	set_start(game, map->map);
+	set_collectible(game, map->map);
+	game.map = map;
+	mlx_key_hook(game.win, deal_key, &game);
+	mlx_loop(game.mlx);
 	//system("leaks so_long");
 	return (EXIT_SUCCESS);
 }

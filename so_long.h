@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/09 14:44:53 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/20 13:55:40 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,32 @@ typedef struct s_map {
 	char	**map;
 }	t_map;
 
-typedef struct s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
+typedef struct s_position {
+	int	x;
+	int	y;
+}	t_position;
+
+typedef struct s_image {
+	void		*img_ptr;
+	char		*addr;
+	t_position	size;
+	int			width;
+	int			height;
+	char		*path;
+}	t_image;
+
+typedef struct s_game {
+	void		*mlx;
+	void		*win;
+	t_position	size_win;
+	t_image		sprite;
+	t_position	sprite_pos;
+	t_map		*map;
+}	t_game;
 
 int		main(int ac, char **av);
 
-void	parse_map(char *av);
+t_map	*parse_map(char *av);
 
 void	check_rectangle(char *line, size_t len);
 void	check_map_closed(t_map *map);
@@ -53,5 +68,11 @@ int		count_char(char *str, char c);
 void	print_map(char **map);
 
 void	check_path(t_map *map);
+
+void	set_background(t_game game, char **map);
+void	set_walls(t_game game, char **map);
+void	set_start(t_game game, char **map);
+void	set_end(t_game game, char **map);
+void	set_collectible(t_game game, char **map);
 
 #endif

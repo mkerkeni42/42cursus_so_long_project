@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:32:28 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/09 11:25:36 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/16 11:04:14 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,47 @@ static void	check_around_position(char	**map, int x, int y)
 		map[y - 1][x] = '|';
 }
 
+static char	**fill_cpy_map(t_map *map, char **map_cpy)
+{
+	map->y = 0;
+	map->x = 0;
+	while (map->map[map->y])
+	{
+		map->x = 0;
+		while (map->map[map->y][map->x])
+		{
+			map_cpy[map->y][map->x] = map->map[map->y][map->x];
+			map->x++;
+		}
+		map->y++;
+	}
+	return (map_cpy);
+}
+
+static char	**get_cpy_map(t_map *map)
+{
+	char	**map_cpy;
+
+	map_cpy = malloc(sizeof(char *) * map->tot_row + 1);
+	if (!map_cpy)
+		handle_error(3);
+	map->y = 0;
+	while (map->y < map->tot_row)
+	{
+		map_cpy[map->y] = malloc(sizeof(char) * (map->tot_col + 1));
+		if (!map_cpy[map->y])
+			handle_error(3);
+		map->y++;
+	}
+	map_cpy = fill_cpy_map(map, map_cpy);
+	return (map_cpy);
+}
+
 void	check_path(t_map *map)
 {
 	char	**map_test;
 
-	map_test = map->map;
+	map_test = get_cpy_map(map);
 	map->x = 0;
 	map->y = 0;
 	while (map_test[map->y])
@@ -68,6 +104,5 @@ void	check_path(t_map *map)
 		}
 		map->y++;
 	}
-	//print_map(map_test);
 	is_valid_path(map_test);
 }
