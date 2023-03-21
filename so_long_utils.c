@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:07:39 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/09 13:58:47 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:23:26 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,28 @@ void	print_map(char **map)
 			x++;
 		}
 		write(1, "\n", 1);
+		y++;
+	}
+}
+
+void	get_position(t_game	*game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (game->map->map[y])
+	{
+		x = 0;
+		while (game->map->map[y][x])
+		{
+			if (game->map->map[y][x] == 'P')
+			{
+				game->sprite_pos.x = x;
+				game->sprite_pos.y = y;
+			}
+			x++;
+		}
 		y++;
 	}
 }

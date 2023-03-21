@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 11:16:48 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/20 13:55:34 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:04:50 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	get_size_array(t_map *map, char *file_name)
 	map->tot_row = map->y;
 	if (close(fd) == -1)
 		handle_error(1);
-	map->map = malloc(sizeof(char *) * (map->y + 1));
+	map->map = malloc(sizeof(char *) * (map->tot_row + 1));
 	if (!map->map)
 		handle_error(3);
 	map->y = 0;

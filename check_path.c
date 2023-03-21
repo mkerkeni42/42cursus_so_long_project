@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:32:28 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/16 11:04:14 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:21:02 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ static char	**fill_cpy_map(t_map *map, char **map_cpy)
 			map_cpy[map->y][map->x] = map->map[map->y][map->x];
 			map->x++;
 		}
+		map_cpy[map->y][map->x] = '\0';
 		map->y++;
 	}
+	map_cpy[map->y] = NULL;
 	return (map_cpy);
 }
 
@@ -65,7 +67,7 @@ static char	**get_cpy_map(t_map *map)
 {
 	char	**map_cpy;
 
-	map_cpy = malloc(sizeof(char *) * map->tot_row + 1);
+	map_cpy = malloc(sizeof(char *) * (map->tot_row + 1));
 	if (!map_cpy)
 		handle_error(3);
 	map->y = 0;

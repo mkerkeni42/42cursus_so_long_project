@@ -6,7 +6,7 @@
 #    By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 12:41:15 by mkerkeni          #+#    #+#              #
-#    Updated: 2023/03/16 14:55:16 by mkerkeni         ###   ########.fr        #
+#    Updated: 2023/03/21 13:22:07 by mkerkeni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ CFLAGS += -fsanitize=address -g3
 endif
 
 SRCS = main.c parsing_map.c check_map.c so_long_utils.c check_path.c set_sprites.c \
+		deal_hook.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/20 13:55:40 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:39:09 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include "Libft/libft.h"
 
@@ -51,6 +50,8 @@ typedef struct s_game {
 	t_image		sprite;
 	t_position	sprite_pos;
 	t_map		*map;
+	int			count;
+	int			collect;
 }	t_game;
 
 int		main(int ac, char **av);
@@ -74,5 +75,9 @@ void	set_walls(t_game game, char **map);
 void	set_start(t_game game, char **map);
 void	set_end(t_game game, char **map);
 void	set_collectible(t_game game, char **map);
+
+void	get_position(t_game *game);
+
+int		deal_key(int key, t_game *game);
 
 #endif
