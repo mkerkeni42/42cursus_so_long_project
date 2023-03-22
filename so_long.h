@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/21 16:39:09 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:08:28 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef struct s_game {
 	t_image		sprite;
 	t_position	sprite_pos;
 	t_map		*map;
-	int			count;
 	int			collect;
 }	t_game;
 
@@ -65,8 +64,11 @@ void	check_start(t_map *map);
 void	check_exit(t_map *map);
 
 void	handle_error(int x);
+int		ft_exit_game(t_game *game);
 int		count_char(char *str, char c);
 void	print_map(char **map);
+void	get_position(t_game *game);
+void	free_map(char **map);
 
 void	check_path(t_map *map);
 
@@ -74,10 +76,15 @@ void	set_background(t_game game, char **map);
 void	set_walls(t_game game, char **map);
 void	set_start(t_game game, char **map);
 void	set_end(t_game game, char **map);
-void	set_collectible(t_game game, char **map);
+void	set_collectible(t_game *game, char **map);
 
-void	get_position(t_game *game);
+void	go_down(t_game *game);
+void	go_up(t_game *game);
+void	go_right(t_game *game);
+void	go_left(t_game *game);
 
 int		deal_key(int key, t_game *game);
+void	set_back(t_game *game);
+void	get_path(t_game *game, int key);
 
 #endif

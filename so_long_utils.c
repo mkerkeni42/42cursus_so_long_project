@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:07:39 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/21 11:23:26 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:08:00 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ void	handle_error(int x)
 	else if (x == 11)
 		write(2, "Your path is not practicable !\n", 31);
 	exit(EXIT_FAILURE);
+}
+
+int	ft_exit_game(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->win);
+	exit(EXIT_SUCCESS);
 }
 
 int	count_char(char	*str, char c)
@@ -79,24 +85,12 @@ void	print_map(char **map)
 	}
 }
 
-void	get_position(t_game	*game)
+void	free_map(char **map)
 {
-	int	y;
-	int	x;
+	int	i;
 
-	y = 0;
-	while (game->map->map[y])
-	{
-		x = 0;
-		while (game->map->map[y][x])
-		{
-			if (game->map->map[y][x] == 'P')
-			{
-				game->sprite_pos.x = x;
-				game->sprite_pos.y = y;
-			}
-			x++;
-		}
-		y++;
-	}
+	i = -1;
+	while (map[++i])
+		free(map[i]);
+	free(map);
 }

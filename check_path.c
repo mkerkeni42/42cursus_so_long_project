@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:32:28 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/21 14:21:02 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:10:32 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,5 @@ void	check_path(t_map *map)
 		map->y++;
 	}
 	is_valid_path(map_test);
+	free_map(map_test);
 }

@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:15:17 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/17 16:02:32 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:16:23 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	set_walls(t_game game, char **map)
 	int	y;
 
 	y = 0;
-	game.sprite.path = "so_long_images_xpm/gaufre_sympa.xpm";
+	game.sprite.path = "so_long_images_xpm/gaufre.xpm";
 	game.sprite.addr = mlx_xpm_file_to_image(game.mlx, game.sprite.path, \
 		&game.sprite.width, &game.sprite.height);
 	while (map[y])
@@ -66,7 +66,7 @@ void	set_end(t_game game, char **map)
 	int	y;
 
 	y = 0;
-	game.sprite.path = "so_long_images_xpm/red_car_front.xpm";
+	game.sprite.path = "so_long_images_xpm/red_car.xpm";
 	game.sprite.addr = mlx_xpm_file_to_image(game.mlx, game.sprite.path, \
 		&game.sprite.width, &game.sprite.height);
 	while (map[y])
@@ -91,7 +91,7 @@ void	set_start(t_game game, char **map)
 	int	y;
 
 	y = 0;
-	game.sprite.path = "so_long_images_xpm/emir_front.xpm";
+	game.sprite.path = "so_long_images_xpm/sprite_front.xpm";
 	game.sprite.addr = mlx_xpm_file_to_image(game.mlx, game.sprite.path, \
 		&game.sprite.width, &game.sprite.height);
 	while (map[y])
@@ -110,15 +110,16 @@ void	set_start(t_game game, char **map)
 	}
 }
 
-void	set_collectible(t_game game, char **map)
+void	set_collectible(t_game *game, char **map)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	game.sprite.path = "so_long_images_xpm/ice_cream_straight.xpm";
-	game.sprite.addr = mlx_xpm_file_to_image(game.mlx, game.sprite.path, \
-		&game.sprite.width, &game.sprite.height);
+	game->collect = 0;
+	game->sprite.path = "so_long_images_xpm/ice_cream.xpm";
+	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
+		&game->sprite.width, &game->sprite.height);
 	while (map[y])
 	{
 		x = 0;
@@ -126,8 +127,9 @@ void	set_collectible(t_game game, char **map)
 		{
 			if (map[y][x] == 'C')
 			{
-				mlx_put_image_to_window(game.mlx, game.win, game.sprite.addr, \
-					64 * x, 64 * y);
+				mlx_put_image_to_window(game->mlx, game->win, \
+				game->sprite.addr, 64 * x, 64 * y);
+				game->collect++;
 			}
 			x++;
 		}

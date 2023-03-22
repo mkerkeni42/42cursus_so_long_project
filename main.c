@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:34:01 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/21 16:44:11 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:07:11 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,28 @@
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
+}
+
+void	get_position(t_game	*game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (game->map->map[y])
+	{
+		x = 0;
+		while (game->map->map[y][x])
+		{
+			if (game->map->map[y][x] == 'P')
+			{
+				game->sprite_pos.x = x;
+				game->sprite_pos.y = y;
+			}
+			x++;
+		}
+		y++;
+	}
 }
 
 static void	check_file_name(char *file_name)
@@ -41,11 +63,11 @@ int	main(int ac, char **av)
 	set_walls(game, map->map);
 	set_end(game, map->map);
 	set_start(game, map->map);
-	set_collectible(game, map->map);
-	game.count = 0;
+	set_collectible(&game, map->map);
 	game.map = map;
+	get_position(&game);
 	mlx_key_hook(game.win, deal_key, &game);
+	mlx_hook(game.win, 17, 0, ft_exit_game, &game);
 	mlx_loop(game.mlx);
-	//system("leaks so_long");
 	return (EXIT_SUCCESS);
 }
