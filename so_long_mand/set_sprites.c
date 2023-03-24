@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:15:17 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/23 14:19:34 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:31:02 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_background(t_game game, char **map)
 
 	x = 0;
 	y = 0;
-	game.sprite.path = "so_long_images_xpm/yellow_square.xpm";
+	game.sprite.path = "so_long_mand/so_long_images_xpm/yellow_square.xpm";
 	game.sprite.addr = mlx_xpm_file_to_image(game.mlx, game.sprite.path, \
 		&game.sprite.width, &game.sprite.height);
 	if (!game.sprite.addr)
@@ -43,7 +43,7 @@ void	set_walls(t_game game, char **map)
 	int	y;
 
 	y = 0;
-	game.sprite.path = "so_long_images_xpm/gaufre.xpm";
+	game.sprite.path = "so_long_mand/so_long_images_xpm/gaufre.xpm";
 	game.sprite.addr = mlx_xpm_file_to_image(game.mlx, game.sprite.path, \
 		&game.sprite.width, &game.sprite.height);
 	if (!game.sprite.addr)
@@ -70,7 +70,7 @@ void	set_end(t_game game, char **map)
 	int	y;
 
 	y = 0;
-	game.sprite.path = "so_long_images_xpm/red_car.xpm";
+	game.sprite.path = "so_long_mand/so_long_images_xpm/red_car.xpm";
 	game.sprite.addr = mlx_xpm_file_to_image(game.mlx, game.sprite.path, \
 		&game.sprite.width, &game.sprite.height);
 	if (!game.sprite.addr)
@@ -97,7 +97,7 @@ void	set_start(t_game game, char **map)
 	int	y;
 
 	y = 0;
-	game.sprite.path = "so_long_images_xpm/sprite_front.xpm";
+	game.sprite.path = "so_long_mand/so_long_images_xpm/sprite_front.xpm";
 	game.sprite.addr = mlx_xpm_file_to_image(game.mlx, game.sprite.path, \
 		&game.sprite.width, &game.sprite.height);
 	if (!game.sprite.addr)
@@ -125,7 +125,7 @@ void	set_collectible(t_game *game, char **map)
 
 	y = 0;
 	game->collect = 0;
-	game->sprite.path = "so_long_images_xpm/ice_cream.xpm";
+	game->sprite.path = "so_long_mand/so_long_images_xpm/ice_cream.xpm";
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
 		&game->sprite.width, &game->sprite.height);
 	if (!game->sprite.addr)

@@ -6,7 +6,7 @@
 #    By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 12:41:15 by mkerkeni          #+#    #+#              #
-#    Updated: 2023/03/22 15:51:30 by mkerkeni         ###   ########.fr        #
+#    Updated: 2023/03/24 13:31:02 by mkerkeni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,34 @@ ifdef DEBUG
 CFLAGS += -fsanitize=address -g3
 endif
 
-SRCS = main.c parsing_map.c check_map.c so_long_utils.c check_path.c set_sprites.c \
-		deal_hook.c make_moovs.c\
+SRCS = 	./so_long_mand/main.c \
+		./so_long_mand/parsing_map.c \
+		./so_long_mand/check_map.c \
+		./so_long_mand/so_long_utils.c \
+		./so_long_mand/check_path.c \
+		./so_long_mand/set_sprites.c \
+		./so_long_mand/deal_hook.c \
+		./so_long_mand/make_moovs.c \
 
-OBJS = $(SRCS:.c=.o)
+SRCS_BONUS = 	./so_long_bonus/main_bonus.c \
+				./so_long_bonus/parsing_map_bonus.c \
+				./so_long_bonus/check_map_bonus.c \
+				./so_long_bonus/so_long_utils_bonus.c \
+				./so_long_bonus/check_path_bonus.c \
+				./so_long_bonus/set_sprites_bonus.c \
+				./so_long_bonus/deal_hook_bonus.c \
+				./so_long_bonus/make_moovs_bonus.c \
+				./so_long_bonus/ennemies.c \
+
+OBJS_MAIN = $(SRCS:.c=.o)
+
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
+ifdef bonus
+OBJS = $(OBJS_MAIN)
+else
+OBJS = $(OBJS_BONUS)
+endif
 
 %.o:%.c
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
@@ -33,11 +57,14 @@ $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT)
 	$(CC) $(CFLAGS) $(LINKS) -o $(NAME) $^ $(LIBFT)libft.a
 
+bonus :
+	$(MAKE) BONUS=1
+
 debug:
 	$(MAKE) DEBUG=1
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJS_BONUS)
 	$(MAKE) clean -C $(LIBFT)
 
 fclean: clean

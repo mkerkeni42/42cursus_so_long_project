@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/23 11:05:52 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:29:56 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -19,7 +19,7 @@
 # include <mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include "Libft/libft.h"
+# include "../Libft/libft.h"
 
 typedef struct s_map {
 	int		tot_row;
@@ -51,6 +51,7 @@ typedef struct s_game {
 	t_position	sprite_pos;
 	t_map		*map;
 	int			collect;
+	int			enemy;
 	int			moov;
 }	t_game;
 
@@ -87,5 +88,7 @@ void	go_left(t_game *game);
 int		deal_key(int key, t_game *game);
 void	set_back(t_game *game);
 void	get_path(t_game *game, int key);
+
+void	set_enemies(t_game *game, char **map);
 
 #endif
