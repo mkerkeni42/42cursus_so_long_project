@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:07:39 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/22 16:08:00 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:15:33 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ void	handle_error(int x)
 	exit(EXIT_FAILURE);
 }
 
-int	ft_exit_game(t_game *game)
+int	ft_exit_game(t_game *game, int x)
 {
+	if (x == 1)
+		write(2, "The path of your image is wrong !\n", 35);
 	mlx_destroy_window(game->mlx, game->win);
 	exit(EXIT_SUCCESS);
 }

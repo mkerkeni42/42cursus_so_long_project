@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:15:17 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/22 16:16:23 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:19:34 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	set_background(t_game game, char **map)
 	game.sprite.path = "so_long_images_xpm/yellow_square.xpm";
 	game.sprite.addr = mlx_xpm_file_to_image(game.mlx, game.sprite.path, \
 		&game.sprite.width, &game.sprite.height);
+	if (!game.sprite.addr)
+		ft_exit_game(&game, 1);
 	while (map[y])
 	{
 		x = 0;
@@ -44,6 +46,8 @@ void	set_walls(t_game game, char **map)
 	game.sprite.path = "so_long_images_xpm/gaufre.xpm";
 	game.sprite.addr = mlx_xpm_file_to_image(game.mlx, game.sprite.path, \
 		&game.sprite.width, &game.sprite.height);
+	if (!game.sprite.addr)
+		ft_exit_game(&game, 1);
 	while (map[y])
 	{
 		x = 0;
@@ -69,6 +73,8 @@ void	set_end(t_game game, char **map)
 	game.sprite.path = "so_long_images_xpm/red_car.xpm";
 	game.sprite.addr = mlx_xpm_file_to_image(game.mlx, game.sprite.path, \
 		&game.sprite.width, &game.sprite.height);
+	if (!game.sprite.addr)
+		ft_exit_game(&game, 1);
 	while (map[y])
 	{
 		x = 0;
@@ -94,6 +100,8 @@ void	set_start(t_game game, char **map)
 	game.sprite.path = "so_long_images_xpm/sprite_front.xpm";
 	game.sprite.addr = mlx_xpm_file_to_image(game.mlx, game.sprite.path, \
 		&game.sprite.width, &game.sprite.height);
+	if (!game.sprite.addr)
+		ft_exit_game(&game, 1);
 	while (map[y])
 	{
 		x = 0;
@@ -102,7 +110,7 @@ void	set_start(t_game game, char **map)
 			if (map[y][x] == 'P')
 			{
 				mlx_put_image_to_window(game.mlx, game.win, game.sprite.addr, \
-					x + (game.sprite.width * x), y + (game.sprite.width * y));
+					game.sprite.width * x, game.sprite.width * y);
 			}
 			x++;
 		}
@@ -120,6 +128,8 @@ void	set_collectible(t_game *game, char **map)
 	game->sprite.path = "so_long_images_xpm/ice_cream.xpm";
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
 		&game->sprite.width, &game->sprite.height);
+	if (!game->sprite.addr)
+		ft_exit_game(game, 1);
 	while (map[y])
 	{
 		x = 0;

@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:34:01 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/22 16:07:11 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/23 10:39:51 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	main(int ac, char **av)
 	set_start(game, map->map);
 	set_collectible(&game, map->map);
 	game.map = map;
+	game.moov = 1;
 	get_position(&game);
 	mlx_key_hook(game.win, deal_key, &game);
 	mlx_hook(game.win, 17, 0, ft_exit_game, &game);

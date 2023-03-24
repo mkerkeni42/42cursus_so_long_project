@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/22 16:08:28 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:05:52 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_game {
 	t_position	sprite_pos;
 	t_map		*map;
 	int			collect;
+	int			moov;
 }	t_game;
 
 int		main(int ac, char **av);
@@ -64,7 +65,7 @@ void	check_start(t_map *map);
 void	check_exit(t_map *map);
 
 void	handle_error(int x);
-int		ft_exit_game(t_game *game);
+int		ft_exit_game(t_game *game, int x);
 int		count_char(char *str, char c);
 void	print_map(char **map);
 void	get_position(t_game *game);

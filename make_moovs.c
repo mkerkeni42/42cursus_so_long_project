@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:45:47 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/22 15:51:55 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:18:56 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	go_down(t_game *game)
 	get_path(game, 1);
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
 		&game->sprite.width, &game->sprite.height);
+	if (!game->sprite.addr)
+		ft_exit_game(game, 1);
 	mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
 		64 * game->sprite_pos.x, 64 * (game->sprite_pos.y));
 }
@@ -40,6 +42,8 @@ void	go_up(t_game *game)
 	get_path(game, 13);
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
 		&game->sprite.width, &game->sprite.height);
+	if (!game->sprite.addr)
+		ft_exit_game(game, 1);
 	mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
 		64 * game->sprite_pos.x, 64 * (game->sprite_pos.y));
 }
@@ -56,6 +60,8 @@ void	go_left(t_game *game)
 	get_path(game, 0);
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
 		&game->sprite.width, &game->sprite.height);
+	if (!game->sprite.addr)
+		ft_exit_game(game, 1);
 	mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
 		64 * (game->sprite_pos.x), 64 * game->sprite_pos.y);
 }
@@ -72,6 +78,8 @@ void	go_right(t_game *game)
 	get_path(game, 2);
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
 		&game->sprite.width, &game->sprite.height);
+	if (!game->sprite.addr)
+		ft_exit_game(game, 1);
 	mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
 		64 * (game->sprite_pos.x), 64 * game->sprite_pos.y);
 }

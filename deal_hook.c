@@ -6,7 +6,7 @@
 /*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:20:38 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/22 16:14:28 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:17:46 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	set_back(t_game *game)
 	game->sprite.path = "so_long_images_xpm/yellow_square.xpm";
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
 		&game->sprite.width, &game->sprite.height);
+	if (!game->sprite.addr)
+		ft_exit_game(game, 1);
 	mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
 		64 * game->sprite_pos.x, 64 * game->sprite_pos.y);
 	if (game->map->map[game->sprite_pos.y][game->sprite_pos.x] == 'E')
@@ -50,12 +52,15 @@ int	deal_key(int key, t_game *game)
 		&& game->map->map[game->sprite_pos.y][game->sprite_pos.x + 1] != '1')
 		go_right(game);
 	else if (key == 53)
-		ft_exit_game(game);
+		ft_exit_game(game, 0);
 	if (game->collect == 0)
 	{
 		if (game->map->map[game->sprite_pos.y][game->sprite_pos.x] == 'E')
-			ft_exit_game(game);
+		{
+			ft_printf("%d\n", game->moov++);
+			ft_exit_game(game, 0);
+		}
 	}
-	ft_printf("%d\n", key);
+	ft_printf("%d\n", game->moov++);
 	return (0);
 }
