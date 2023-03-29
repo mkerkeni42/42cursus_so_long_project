@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:07:39 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/23 11:15:33 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:50:47 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	handle_error(int x)
 	else if (x == 6)
 		write(2, "There is no collectible in your map !\n", 38);
 	else if (x == 7)
-		write(2, "You map hasn't one start position !\n", 36);
+		write(2, "You map hasn't one start position or one exit!\n", 47);
 	else if (x == 8)
-		write(2, "You map hasn't one exit !\n", 26);
+		write(2, "You map has wrong elements!\n", 29);
 	else if (x == 9)
 		write(2, "Wrong number of arguments !\n", 28);
 	else if (x == 10)
@@ -47,24 +47,6 @@ int	ft_exit_game(t_game *game, int x)
 		write(2, "The path of your image is wrong !\n", 35);
 	mlx_destroy_window(game->mlx, game->win);
 	exit(EXIT_SUCCESS);
-}
-
-int	count_char(char	*str, char c)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	if (!str)
-		exit(EXIT_FAILURE);
-	while (str[i])
-	{
-		if (str[i] == c)
-			count++;
-		i++;
-	}
-	return (count);
 }
 
 void	print_map(char **map)

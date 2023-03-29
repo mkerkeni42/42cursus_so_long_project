@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/20 11:42:45 by mkerkeni          #+#    #+#              #
-#    Updated: 2023/02/23 13:32:15 by mkerkeni         ###   ########.fr        #
+#    Updated: 2023/03/28 11:09:58 by mkerkeni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,19 +39,23 @@ SRCS_BONUS = ft_lstnew.c \
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
+%.o:%.c
+	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+
 all: $(NAME)
 	
 $(NAME): $(OBJS)
-	ar -rcs $@ $^
+	@ar -rcs $@ $^
 
 bonus: $(OBJS_BONUS) $(OBJS)
-	ar -rcs $(NAME) $^
+	@ar -rcs $(NAME) $^
 	
 clean:
-	rm -f $(OBJS) $(OBJS_BONUS)
+	@rm -f $(OBJS) $(OBJS_BONUS)
+	@echo "	Binary files have been deleted successfully !"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

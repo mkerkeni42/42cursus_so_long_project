@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/24 13:29:56 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/29 12:51:20 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,42 +53,49 @@ typedef struct s_game {
 	int			collect;
 	int			enemy;
 	int			moov;
+	int			end;
+	int			start;
 }	t_game;
 
 int		main(int ac, char **av);
+void	set_big_image(t_game *game, int x);
+void	get_path_big_image(t_game *game, int x);
+void	get_position(t_game *game);
 
 t_map	*parse_map(char *av);
 
 void	check_rectangle(char *line, size_t len);
 void	check_map_closed(t_map *map);
 void	check_collectible(t_map *map);
-void	check_start(t_map *map);
-void	check_exit(t_map *map);
-
-void	handle_error(int x);
-int		ft_exit_game(t_game *game, int x);
-int		count_char(char *str, char c);
-void	print_map(char **map);
-void	get_position(t_game *game);
-void	free_map(char **map);
+void	check_element(t_map *map);
 
 void	check_path(t_map *map);
 
-void	set_background(t_game game, char **map);
-void	set_walls(t_game game, char **map);
-void	set_start(t_game game, char **map);
-void	set_end(t_game game, char **map);
-void	set_collectible(t_game *game, char **map);
+int		deal_key(int key, t_game *game);
+void	set_game(t_game *game);
+void	set_back(t_game *game);
+void	get_path(t_game *game, int key);
+void	end_game(t_game *game, int key);
+
+void	set_background(t_game *game);
+void	set_walls(t_game *game);
+void	set_start(t_game *game);
+void	set_end(t_game *game);
+void	set_collectible(t_game *game);
 
 void	go_down(t_game *game);
 void	go_up(t_game *game);
 void	go_right(t_game *game);
 void	go_left(t_game *game);
 
-int		deal_key(int key, t_game *game);
-void	set_back(t_game *game);
-void	get_path(t_game *game, int key);
+void	handle_error(int x);
+int		ft_exit_game(t_game *game, int x);
+void	print_map(char **map);
+void	free_map(char **map);
 
-void	set_enemies(t_game *game, char **map);
+void	set_enemies(t_game *game);
+void	get_path_life(t_game *game);
+void	set_life(t_game *game);
+void	check_enemy(t_game *game, int key);
 
 #endif

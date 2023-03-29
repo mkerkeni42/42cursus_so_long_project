@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_moovs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:45:47 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/23 14:18:56 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:14:44 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	go_down(t_game *game)
 		ft_exit_game(game, 1);
 	mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
 		64 * game->sprite_pos.x, 64 * (game->sprite_pos.y));
+	ft_printf("%d\n", game->moov++);
 }
 
 void	go_up(t_game *game)
@@ -46,6 +47,7 @@ void	go_up(t_game *game)
 		ft_exit_game(game, 1);
 	mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
 		64 * game->sprite_pos.x, 64 * (game->sprite_pos.y));
+	ft_printf("%d\n", game->moov++);
 }
 
 void	go_left(t_game *game)
@@ -64,6 +66,7 @@ void	go_left(t_game *game)
 		ft_exit_game(game, 1);
 	mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
 		64 * (game->sprite_pos.x), 64 * game->sprite_pos.y);
+	ft_printf("%d\n", game->moov++);
 }
 
 void	go_right(t_game *game)
@@ -82,4 +85,5 @@ void	go_right(t_game *game)
 		ft_exit_game(game, 1);
 	mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, \
 		64 * (game->sprite_pos.x), 64 * game->sprite_pos.y);
+	ft_printf("%d\n", game->moov++);
 }

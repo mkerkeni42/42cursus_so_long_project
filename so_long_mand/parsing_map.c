@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 11:16:48 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/21 14:04:50 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:32:07 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,7 @@ t_map	*parse_map(char *file_name)
 	map->x = 0;
 	check_map_closed(map);
 	check_collectible(map);
-	check_start(map);
-	check_exit(map);
+	check_element(map);
 	check_path(map);
 	return (map);
 }

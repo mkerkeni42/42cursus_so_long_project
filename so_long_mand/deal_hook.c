@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deal_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:20:38 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/24 13:31:02 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:14:16 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,5 @@ int	deal_key(int key, t_game *game)
 			ft_exit_game(game, 0);
 		}
 	}
-	ft_printf("%d\n", game->moov++);
 	return (0);
 }

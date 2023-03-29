@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 12:41:15 by mkerkeni          #+#    #+#              #
-#    Updated: 2023/03/24 13:31:02 by mkerkeni         ###   ########.fr        #
+#    Updated: 2023/03/29 12:11:34 by mkerkeni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ LIBFT = Libft/
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 LINKS = -I /usr/local/lib -lmlx -framework OpenGL -framework AppKit
-ifdef DEBUG
+#ifdef DEBUG
 CFLAGS += -fsanitize=address -g3
-endif
+#endif
 
 SRCS = 	./so_long_mand/main.c \
 		./so_long_mand/parsing_map.c \
@@ -36,41 +36,43 @@ SRCS_BONUS = 	./so_long_bonus/main_bonus.c \
 				./so_long_bonus/set_sprites_bonus.c \
 				./so_long_bonus/deal_hook_bonus.c \
 				./so_long_bonus/make_moovs_bonus.c \
-				./so_long_bonus/ennemies.c \
+				./so_long_bonus/handle_ennemies.c \
 
 OBJS_MAIN = $(SRCS:.c=.o)
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
-ifdef bonus
+ifndef BONUS
 OBJS = $(OBJS_MAIN)
 else
 OBJS = $(OBJS_BONUS)
 endif
 
 %.o:%.c
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFT)
-	$(CC) $(CFLAGS) $(LINKS) -o $(NAME) $^ $(LIBFT)libft.a
+	@echo "	Compilation in progress..."
+	@$(MAKE) -C $(LIBFT)
+	@$(CC) $(CFLAGS) $(LINKS) -o $(NAME) $^ $(LIBFT)libft.a
+	@echo "	Compiled !"
 
-bonus :
-	$(MAKE) BONUS=1
+bonus : fclean
+	@$(MAKE) BONUS=1
 
 debug:
-	$(MAKE) DEBUG=1
+	@$(MAKE) DEBUG=1
 
 clean:
-	rm -f $(OBJS) $(OBJS_BONUS)
-	$(MAKE) clean -C $(LIBFT)
+	@rm -f $(OBJS)
+	@$(MAKE) clean -C $(LIBFT)
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f Libft/libft.a
+	@rm -f $(NAME)
+	@rm -f Libft/libft.a
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

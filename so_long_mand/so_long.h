@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/24 12:05:18 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:36:00 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ t_map	*parse_map(char *av);
 void	check_rectangle(char *line, size_t len);
 void	check_map_closed(t_map *map);
 void	check_collectible(t_map *map);
-void	check_start(t_map *map);
-void	check_exit(t_map *map);
+void	check_element(t_map *map);
 
 void	handle_error(int x);
 int		ft_exit_game(t_game *game, int x);

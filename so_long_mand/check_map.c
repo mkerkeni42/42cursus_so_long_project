@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkerkeni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:19:37 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/07 16:15:50 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/28 11:15:57 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,32 +64,29 @@ void	check_collectible(t_map *map)
 		handle_error(6);
 }
 
-void	check_start(t_map *map)
+void	check_element(t_map *map)
 {
-	int	count;
+	int	count_p;
+	int	count_e;
 
-	count = 0;
-	map->y = 0;
-	while (map->y < map->tot_row)
+	count_p = 0;
+	count_e = 0;
+	map->y = -1;
+	while (++map->y < map->tot_row)
 	{
-		count += count_char(map->map[map->y], 'P');
-		map->y++;
+		map->x = -1;
+		while (++map->x < map->tot_col)
+		{
+			if (map->map[map->y][map->x] == 'P')
+				count_p++;
+			else if (map->map[map->y][map->x] == 'E')
+				count_e++;
+			else if (map->map[map->y][map->x] != '0'
+				&& map->map[map->y][map->x] != '1'
+				&& map->map[map->y][map->x] != 'C')
+				handle_error(8);
+		}
 	}
-	if (count == 0 || count > 1)
+	if (count_p != 1 || count_e != 1)
 		handle_error(7);
-}
-
-void	check_exit(t_map *map)
-{
-	int	count;
-
-	count = 0;
-	map->y = 0;
-	while (map->y < map->tot_row)
-	{
-		count += count_char(map->map[map->y], 'E');
-		map->y++;
-	}
-	if (count == 0 || count > 1)
-		handle_error(8);
 }
