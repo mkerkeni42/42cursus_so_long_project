@@ -6,7 +6,7 @@
 #    By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 12:41:15 by mkerkeni          #+#    #+#              #
-#    Updated: 2023/03/29 12:11:34 by mkerkeni         ###   ########.fr        #
+#    Updated: 2023/03/29 15:53:29 by mkerkeni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ debug:
 	@$(MAKE) DEBUG=1
 
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJS)$(OBJS_BONUS)
 	@$(MAKE) clean -C $(LIBFT)
 
 fclean: clean
