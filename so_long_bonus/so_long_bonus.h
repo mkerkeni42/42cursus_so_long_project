@@ -6,7 +6,7 @@
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/29 12:51:20 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:21:14 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_game {
 	int			moov;
 	int			end;
 	int			start;
+	int			frame;
+	char		*back;
 }	t_game;
 
 int		main(int ac, char **av);

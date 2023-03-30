@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_moovs_bonus.c                                 :+:      :+:    :+:   */
+/*   make_moves_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:45:47 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/29 15:02:09 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:52:48 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ static void	print_moovs(t_game *game)
 	char	*s;
 	char	*final;
 	char	*tmp;
-	
+
 	s = ft_itoa(game->moov - 1);
 	tmp = malloc(sizeof(char) * 11 + 1);
 	tmp = "Moves = ";
 	final = ft_strjoin(tmp, s);
-	ft_printf("s = %s\n", s);
 	game->sprite.path = "so_long_bonus/so_long_images_xpm/gaufre.xpm";
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
 		&game->sprite.width, &game->sprite.height);
@@ -43,6 +42,7 @@ void	go_down(t_game *game)
 	{
 		game->map->map[game->sprite_pos.y][game->sprite_pos.x] = '0';
 		game->collect--;
+		//get_path(game, )
 	}
 	get_path(game, 1);
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \

@@ -6,7 +6,7 @@
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:00:18 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/29 16:00:23 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:02:59 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,23 @@ void	get_position(t_game	*game)
 	}
 }
 
-void	get_path_big_image(t_game *game, int x)
+int	render_next_frame(t_game *game)
 {
-	if (x == 0)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/open_image.xpm";
-	else if (x == 1)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/win_image.xpm";
-	else if (x == 2)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/game_over.xpm";
+	game->frame++;
+	if (game->start == 1 && game->enemy < 3 && game->end < 1)
+		set_enemies(game);
+	if (game->frame > 2147483646)
+		game->frame = 0;
+	return (0);
 }
 
-void	set_big_image(t_game *game, int x)
+void	init_vars(t_game *game)
 {
-	get_path_big_image(game, x);
-	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
-		&game->sprite.width, &game->sprite.height);
-	if (!game->sprite.addr)
-		ft_exit_game(game, 1);
-	mlx_put_image_to_window(game->mlx, game->win, game->sprite.addr, 0, 0);
+	game->moov = 1;
+	game->enemy = 0;
+	game->start = 0;
+	game->end = 0;
+	game->frame = 0;
 }
 
 int	main(int ac, char **av)
@@ -69,13 +68,11 @@ int	main(int ac, char **av)
 		game.size_win.y, "SUPER EMIR WORLD");
 	game.map = map;
 	set_big_image(&game, 0);
-	game.moov = 1;
-	game.enemy = 0;
-	game.start = 0;
-	game.end = 0;
+	init_vars(&game);
 	get_position(&game);
 	mlx_key_hook(game.win, deal_key, &game);
 	mlx_hook(game.win, 17, 0, ft_exit_game, &game);
+	mlx_loop_hook(game.mlx, render_next_frame, &game);
 	mlx_loop(game.mlx);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:20:38 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/29 14:59:58 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:52:41 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	get_path(t_game *game, int key)
 		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_left.xpm";
 	else if (key == 2)
 		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_right.xpm";
+	//else if (key == 3)
+	
 }
 
 void	set_back(t_game *game)

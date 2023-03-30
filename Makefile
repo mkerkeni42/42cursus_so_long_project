@@ -6,7 +6,7 @@
 #    By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 12:41:15 by mkerkeni          #+#    #+#              #
-#    Updated: 2023/03/29 15:53:29 by mkerkeni         ###   ########.fr        #
+#    Updated: 2023/03/30 13:19:07 by mkerkeni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,7 @@ LIBFT = Libft/
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 LINKS = -I /usr/local/lib -lmlx -framework OpenGL -framework AppKit
-#ifdef DEBUG
 CFLAGS += -fsanitize=address -g3
-#endif
 
 SRCS = 	./so_long_mand/main.c \
 		./so_long_mand/parsing_map.c \
@@ -26,17 +24,19 @@ SRCS = 	./so_long_mand/main.c \
 		./so_long_mand/check_path.c \
 		./so_long_mand/set_sprites.c \
 		./so_long_mand/deal_hook.c \
-		./so_long_mand/make_moovs.c \
+		./so_long_mand/make_moves.c
 
-SRCS_BONUS = 	./so_long_bonus/main_bonus.c \
-				./so_long_bonus/parsing_map_bonus.c \
+SRCS_BONUS = 	./so_long_bonus/parsing_map_bonus.c \
+				./so_long_bonus/main_bonus.c \
 				./so_long_bonus/check_map_bonus.c \
 				./so_long_bonus/so_long_utils_bonus.c \
 				./so_long_bonus/check_path_bonus.c \
 				./so_long_bonus/set_sprites_bonus.c \
 				./so_long_bonus/deal_hook_bonus.c \
-				./so_long_bonus/make_moovs_bonus.c \
-				./so_long_bonus/handle_ennemies.c \
+				./so_long_bonus/make_moves_bonus.c \
+				./so_long_bonus/handle_enemies.c \
+				./so_long_bonus/set_big_images.c \
+				./so_long_bonus/set_life.c 
 
 OBJS_MAIN = $(SRCS:.c=.o)
 
@@ -62,11 +62,8 @@ $(NAME): $(OBJS)
 bonus : fclean
 	@$(MAKE) BONUS=1
 
-debug:
-	@$(MAKE) DEBUG=1
-
 clean:
-	@rm -f $(OBJS)$(OBJS_BONUS)
+	@rm -f $(OBJS) $(OBJS_BONUS)
 	@$(MAKE) clean -C $(LIBFT)
 
 fclean: clean
