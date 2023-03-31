@@ -6,7 +6,7 @@
 #    By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 12:41:15 by mkerkeni          #+#    #+#              #
-#    Updated: 2023/03/31 09:56:51 by mkerkeni         ###   ########.fr        #
+#    Updated: 2023/03/31 13:32:20 by mkerkeni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(LINKS) -o $(NAME) $^ $(LIBFT)libft.a
 	@echo "	Compiled !"
 
-bonus : fclean
+bonus :
 	@$(MAKE) BONUS=1
 
 clean:
