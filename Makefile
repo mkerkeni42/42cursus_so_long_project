@@ -6,7 +6,7 @@
 #    By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 12:41:15 by mkerkeni          #+#    #+#              #
-#    Updated: 2023/03/30 13:19:07 by mkerkeni         ###   ########.fr        #
+#    Updated: 2023/03/31 09:56:51 by mkerkeni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ LIBFT = Libft/
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 LINKS = -I /usr/local/lib -lmlx -framework OpenGL -framework AppKit
-CFLAGS += -fsanitize=address -g3
+#CFLAGS += -fsanitize=address -g3
 
 SRCS = 	./so_long_mand/main.c \
 		./so_long_mand/parsing_map.c \

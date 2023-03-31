@@ -6,7 +6,7 @@
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/30 11:21:14 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/31 13:24:29 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,15 @@ typedef struct s_game {
 	t_map		*map;
 	int			collect;
 	int			enemy;
-	int			moov;
+	int			move;
 	int			end;
 	int			start;
 	int			frame;
 	char		*back;
+	int			key;
 }	t_game;
 
 int		main(int ac, char **av);
-void	set_big_image(t_game *game, int x);
-void	get_path_big_image(t_game *game, int x);
-void	get_position(t_game *game);
 
 t_map	*parse_map(char *av);
 
@@ -70,6 +68,9 @@ void	check_rectangle(char *line, size_t len);
 void	check_map_closed(t_map *map);
 void	check_collectible(t_map *map);
 void	check_element(t_map *map);
+
+void	set_big_image(t_game *game, int x);
+void	get_path_big_image(t_game *game, int x);
 
 void	check_path(t_map *map);
 
@@ -96,8 +97,9 @@ void	print_map(char **map);
 void	free_map(char **map);
 
 void	set_enemies(t_game *game);
+void	check_enemy(t_game *game);
+
 void	get_path_life(t_game *game);
 void	set_life(t_game *game);
-void	check_enemy(t_game *game, int key);
 
 #endif

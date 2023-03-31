@@ -6,7 +6,7 @@
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:20:38 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/30 15:52:41 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/31 13:13:34 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@ void	get_path(t_game *game, int key)
 		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_left.xpm";
 	else if (key == 2)
 		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_right.xpm";
-	//else if (key == 3)
-	
+	else if (key == 3)
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/spr_r_eat.xpm";
+	else if (key == 4)
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/spr_l_eat.xpm";
+	else if (key == 5)
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/spr_fr_eat.xpm";
 }
 
 void	set_back(t_game *game)
@@ -68,6 +72,7 @@ void	set_game(t_game *game)
 
 int	deal_key(int key, t_game *game)
 {
+	game->key = key;
 	if (key == 36 && game->start == 0)
 		set_game(game);
 	if (key == 1 && game->start == 1 && game->enemy < 3 && game->end < 1
@@ -84,7 +89,6 @@ int	deal_key(int key, t_game *game)
 		go_right(game);
 	else if (key == 53)
 		ft_exit_game(game, 0);
-	check_enemy(game, key);
 	if (game->collect == 0)
 		end_game(game, key);
 	return (0);

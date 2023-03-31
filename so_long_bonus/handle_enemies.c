@@ -6,7 +6,7 @@
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 12:41:54 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/30 14:46:06 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/31 13:20:59 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	set_back_enemy(t_game *game, int x, int y)
 			64 * x, 64 * y);
 }
 
-void	get_path_enemy(t_game *game, int x)
+static void	get_path_enemy(t_game *game, int x)
 {
 	if (x == 0)
 		game->sprite.path = "so_long_bonus/so_long_images_xpm/broco_left.xpm";
@@ -37,7 +37,7 @@ void	get_path_enemy(t_game *game, int x)
 		ft_exit_game(game, 1);
 }
 
-void	print_enemy(t_game *game, int img, int x, int y)
+static void	print_enemy(t_game *game, int img, int x, int y)
 {
 	if (game->frame % 1000 == 0)
 	{
@@ -72,7 +72,7 @@ void	set_enemies(t_game *game)
 	}
 }
 
-void	check_enemy(t_game *game, int key)
+void	check_enemy(t_game *game)
 {
 	if (game->map->map[game->sprite_pos.y][game->sprite_pos.x] == 'A')
 	{
@@ -80,7 +80,7 @@ void	check_enemy(t_game *game, int key)
 		if (game->enemy >= 3)
 		{
 			set_big_image(game, 2);
-			if (key == 36 || key == 17)
+			if (game->key == 36 || game->key == 17)
 				ft_exit_game(game, 0);
 		}
 		set_life(game);

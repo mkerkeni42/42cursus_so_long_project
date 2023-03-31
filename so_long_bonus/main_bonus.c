@@ -6,13 +6,13 @@
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:00:18 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/30 14:02:59 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/03/31 13:23:25 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	get_position(t_game	*game)
+static void	get_position(t_game	*game)
 {
 	int	y;
 	int	x;
@@ -32,7 +32,7 @@ void	get_position(t_game	*game)
 	}
 }
 
-int	render_next_frame(t_game *game)
+static int	render_next_frame(t_game *game)
 {
 	game->frame++;
 	if (game->start == 1 && game->enemy < 3 && game->end < 1)
@@ -42,9 +42,9 @@ int	render_next_frame(t_game *game)
 	return (0);
 }
 
-void	init_vars(t_game *game)
+static void	init_vars(t_game *game)
 {
-	game->moov = 1;
+	game->move = 1;
 	game->enemy = 0;
 	game->start = 0;
 	game->end = 0;
