@@ -6,13 +6,13 @@
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:20:38 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/31 13:13:34 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/04/03 10:05:30 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	end_game(t_game *game, int key)
+static void	end_game(t_game *game, int key)
 {
 	if (game->map->map[game->sprite_pos.y][game->sprite_pos.x] == 'E')
 	{
@@ -91,5 +91,8 @@ int	deal_key(int key, t_game *game)
 		ft_exit_game(game, 0);
 	if (game->collect == 0)
 		end_game(game, key);
+	if (game->game_over > 0)
+		if (game->key == 36 || game->key == 17)
+			ft_exit_game(game, 0);
 	return (0);
 }

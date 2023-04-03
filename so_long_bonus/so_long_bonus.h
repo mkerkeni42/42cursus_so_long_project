@@ -6,19 +6,15 @@
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:51:36 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/31 13:24:29 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/04/03 09:30:26 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
-# include <sys/types.h>
-# include <sys/stat.h>
 # include <fcntl.h>
 # include <mlx.h>
-# include <unistd.h>
-# include <stdlib.h>
 # include "../Libft/libft.h"
 
 typedef struct s_map {
@@ -58,6 +54,7 @@ typedef struct s_game {
 	int			frame;
 	char		*back;
 	int			key;
+	int			game_over;
 }	t_game;
 
 int		main(int ac, char **av);
@@ -78,7 +75,6 @@ int		deal_key(int key, t_game *game);
 void	set_game(t_game *game);
 void	set_back(t_game *game);
 void	get_path(t_game *game, int key);
-void	end_game(t_game *game, int key);
 
 void	set_background(t_game *game);
 void	set_walls(t_game *game);

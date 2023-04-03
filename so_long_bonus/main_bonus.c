@@ -6,7 +6,7 @@
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:00:18 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/31 13:23:25 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/04/03 09:33:05 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	init_vars(t_game *game)
 	game->start = 0;
 	game->end = 0;
 	game->frame = 0;
+	game->game_over = 0;
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 12:41:54 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/03/31 13:20:59 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2023/04/03 09:34:52 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ void	check_enemy(t_game *game)
 		if (game->enemy >= 3)
 		{
 			set_big_image(game, 2);
-			if (game->key == 36 || game->key == 17)
-				ft_exit_game(game, 0);
+			game->game_over++;
 		}
 		set_life(game);
 	}
