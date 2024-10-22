@@ -18,7 +18,7 @@ static void	end_game(t_game *game, int key)
 	{
 		set_big_image(game, 1);
 		game->end++;
-		if (key == 36 || key == 17)
+		if (key == ESC || key == QUIT)
 			ft_exit_game(game, 0);
 	}
 }
@@ -73,27 +73,26 @@ void	set_game(t_game *game)
 int	deal_key(int key, t_game *game)
 {
 	game->key = key;
-	ft_printf("key = %d\n", key);
-	if (key == 32 && game->start == 0)
+	if (key == ENTER && game->start == 0)
 		set_game(game);
-	if (key == 115 && game->start == 1 && game->enemy < 3 && game->end < 1
+	if (key == DOWN && game->start == 1 && game->enemy < 3 && game->end < 1
 		&& game->map->map[game->sprite_pos.y + 1][game->sprite_pos.x] != '1')
 		go_down(game);
-	else if (key == 119 && game->start == 1 && game->enemy < 3 && game->end < 1
+	else if (key == UP && game->start == 1 && game->enemy < 3 && game->end < 1
 		&& game->map->map[game->sprite_pos.y - 1][game->sprite_pos.x] != '1')
 		go_up(game);
-	else if (key == 113 && game->start == 1 && game->enemy < 3 && game->end < 1
+	else if (key == LEFT && game->start == 1 && game->enemy < 3 && game->end < 1
 		&& game->map->map[game->sprite_pos.y][game->sprite_pos.x - 1] != '1')
 		go_left(game);
-	else if (key == 100 && game->start == 1 && game->enemy < 3 && game->end < 1
+	else if (key == RIGHT && game->start == 1 && game->enemy < 3 && game->end < 1
 		&& game->map->map[game->sprite_pos.y][game->sprite_pos.x + 1] != '1')
 		go_right(game);
-	else if (key == 53)
+	else if (key == ESC)
 		ft_exit_game(game, 0);
 	if (game->collect == 0)
 		end_game(game, key);
 	if (game->game_over > 0)
-		if (game->key == 65307 || game->key == 17)
+		if (game->key == ESC || game->key == QUIT)
 			ft_exit_game(game, 0);
 	return (0);
 }

@@ -39,16 +39,16 @@ void	set_back(t_game *game)
 
 int	deal_key(int key, t_game *game)
 {
-	if (key == 1
+	if (key == DOWN
 		&& game->map->map[game->sprite_pos.y + 1][game->sprite_pos.x] != '1')
 		go_down(game);
-	else if (key == 13
+	else if (key == UP
 		&& game->map->map[game->sprite_pos.y - 1][game->sprite_pos.x] != '1')
 		go_up(game);
-	else if (key == 0
+	else if (key == LEFT
 		&& game->map->map[game->sprite_pos.y][game->sprite_pos.x - 1] != '1')
 		go_left(game);
-	else if (key == 2
+	else if (key == RIGHT
 		&& game->map->map[game->sprite_pos.y][game->sprite_pos.x + 1] != '1')
 		go_right(game);
 	else if (key == 53)

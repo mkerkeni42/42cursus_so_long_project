@@ -17,6 +17,13 @@
 # include "../minilibx-linux/mlx.h"
 # include "../Libft/libft.h"
 
+# define UP 119 //13
+# define DOWN 115 //1
+# define LEFT 97 //0
+# define RIGHT 100 //2
+# define ENTER 65293
+# define ESC 65307 // 53
+# define QUIT 113
 typedef struct s_map {
 	int		tot_row;
 	int		tot_col;

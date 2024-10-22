@@ -21,6 +21,11 @@
 # include <stdlib.h>
 # include "../Libft/libft.h"
 
+# define UP 119 //13
+# define DOWN 115 //1
+# define LEFT 97 //0
+# define RIGHT 100 //2
+
 typedef struct s_map {
 	int		tot_row;
 	int		tot_col;

@@ -67,7 +67,7 @@ int	main(int ac, char **av)
 	game.map = map;
 	game.moov = 1;
 	get_position(&game);
-	mlx_key_hook(game.win, deal_key, &game);
+	mlx_hook(game.win, 2, 1L << 0, &deal_key, &game);
 	mlx_hook(game.win, 17, 0, ft_exit_game, &game);
 	mlx_loop(game.mlx);
 	return (EXIT_SUCCESS);

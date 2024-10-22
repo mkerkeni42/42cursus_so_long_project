@@ -71,7 +71,7 @@ int	main(int ac, char **av)
 	set_big_image(&game, 0);
 	init_vars(&game);
 	get_position(&game);
-	mlx_key_hook(game.win, deal_key, &game);
+	mlx_hook(game.win, 2, 1L << 0, &deal_key, &game);
 	mlx_hook(game.win, 17, 0, ft_exit_game, &game);
 	mlx_loop_hook(game.mlx, render_next_frame, &game);
 	mlx_loop(game.mlx);
