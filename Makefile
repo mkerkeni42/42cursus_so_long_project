@@ -14,8 +14,8 @@ NAME = so_long
 LIBFT = Libft/
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-LINKS = -I /usr/local/lib -lmlx -framework OpenGL -framework AppKit
 #CFLAGS += -fsanitize=address -g3
+HEADER = ./
 
 SRCS = 	./so_long_mand/main.c \
 		./so_long_mand/parsing_map.c \
@@ -49,14 +49,14 @@ OBJS = $(OBJS_BONUS)
 endif
 
 %.o:%.c
-	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "	Compilation in progress..."
 	@$(MAKE) -C $(LIBFT)
-	@$(CC) $(CFLAGS) $(LINKS) -o $(NAME) $^ $(LIBFT)libft.a
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT)libft.a -I $(HEADER) -o $(NAME) -L /home/mkerkeni/42_cursus/42_cursus_so_long_project/minilibx-linux -lmlx -lXext -lX11 -lm
 	@echo "	Compiled !"
 
 bonus :

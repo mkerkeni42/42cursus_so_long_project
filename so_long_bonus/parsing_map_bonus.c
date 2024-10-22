@@ -53,7 +53,7 @@ static int	count_rows(char *line, int fd)
 	int	y;
 
 	y = 0;
-	while (line > 0)
+	while (line)
 	{
 		y++;
 		free(line);

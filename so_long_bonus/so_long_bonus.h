@@ -14,7 +14,7 @@
 # define SO_LONG_BONUS_H
 
 # include <fcntl.h>
-# include <mlx.h>
+# include "../minilibx-linux/mlx.h"
 # include "../Libft/libft.h"
 
 typedef struct s_map {

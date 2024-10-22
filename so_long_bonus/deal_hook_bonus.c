@@ -6,7 +6,7 @@
 /*   By: mkerkeni <mkerkeni@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:20:38 by mkerkeni          #+#    #+#             */
-/*   Updated: 2023/04/03 10:05:30 by mkerkeni         ###   ########.fr       */
+/*   Updated: 2024/01/31 12:22:49 by mkerkeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,18 +73,19 @@ void	set_game(t_game *game)
 int	deal_key(int key, t_game *game)
 {
 	game->key = key;
-	if (key == 36 && game->start == 0)
+	ft_printf("key = %d\n", key);
+	if (key == 32 && game->start == 0)
 		set_game(game);
-	if (key == 1 && game->start == 1 && game->enemy < 3 && game->end < 1
+	if (key == 115 && game->start == 1 && game->enemy < 3 && game->end < 1
 		&& game->map->map[game->sprite_pos.y + 1][game->sprite_pos.x] != '1')
 		go_down(game);
-	else if (key == 13 && game->start == 1 && game->enemy < 3 && game->end < 1
+	else if (key == 119 && game->start == 1 && game->enemy < 3 && game->end < 1
 		&& game->map->map[game->sprite_pos.y - 1][game->sprite_pos.x] != '1')
 		go_up(game);
-	else if (key == 0 && game->start == 1 && game->enemy < 3 && game->end < 1
+	else if (key == 113 && game->start == 1 && game->enemy < 3 && game->end < 1
 		&& game->map->map[game->sprite_pos.y][game->sprite_pos.x - 1] != '1')
 		go_left(game);
-	else if (key == 2 && game->start == 1 && game->enemy < 3 && game->end < 1
+	else if (key == 100 && game->start == 1 && game->enemy < 3 && game->end < 1
 		&& game->map->map[game->sprite_pos.y][game->sprite_pos.x + 1] != '1')
 		go_right(game);
 	else if (key == 53)
@@ -92,7 +93,7 @@ int	deal_key(int key, t_game *game)
 	if (game->collect == 0)
 		end_game(game, key);
 	if (game->game_over > 0)
-		if (game->key == 36 || game->key == 17)
+		if (game->key == 65307 || game->key == 17)
 			ft_exit_game(game, 0);
 	return (0);
 }
