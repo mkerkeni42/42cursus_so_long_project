@@ -13,14 +13,15 @@ In the bonus version, you have to **avoid broccoli enemies** 🥦 while collecti
 ## How To Use 🕹️
 
 1. **Compile the game** using `make`.
+   
 2. **Run the game** with the command:
-   ```bash
-   ./so_long [map_file.ber]
+   ```
+   ./so_long maps/map.ber
 3. **Move the character** using the W, A, S, D keys to collect all the ice creams.
-4. For the bonus version, compile and run the bonus with:
-   ```make bonus
-   ./so_long_bonus [map_file.ber]
-
+   
+4. For the bonus version, compile with `make bonus` and run the game with:
+   ```
+   ./so_long_bonus maps/map_bonus.ber  
 ## Technologies Used ⚙️
 
 - <img src="https://cdn.worldvectorlogo.com/logos/c-1.svg" alt="C" width="40" height="40"/>
