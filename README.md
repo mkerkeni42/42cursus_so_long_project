@@ -6,6 +6,10 @@
 The goal of the game is to collect all the ice creams on the map and then make your way to the red car 🚗 to win! 
 In the bonus version, you have to **avoid broccoli enemies** 🥦 while collecting ice creams, and if you touch the broccoli **three times**, you lose 💥. 
 
+<img src="screenshots/start_image.png" alt="My Image" height="350"/> <img src="screenshots/game.png" alt="My Image" height="350"/> 
+<img src="screenshots/winning_image.png" alt="My Image" height="350"/> <img src="screenshots/game_over_image.png" alt="My Image" height="350"/> 
+
+
 ## How To Use 🕹️
 
 1. **Compile the game** using `make`.
