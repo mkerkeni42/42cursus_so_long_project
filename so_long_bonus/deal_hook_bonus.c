@@ -26,19 +26,19 @@ static void	end_game(t_game *game, int key)
 void	get_path(t_game *game, int key)
 {
 	if (key == 1)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_front.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_front_with_back.xpm";
 	else if (key == 13)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_back.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_back_with_back.xpm";
 	else if (key == 0)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_left.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_left_with_back.xpm";
 	else if (key == 2)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_right.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_right_with_back.xpm";
 	else if (key == 3)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/spr_r_eat.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_right_eat_with_back.xpm";
 	else if (key == 4)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/spr_l_eat.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_left_eat_with_back.xpm";
 	else if (key == 5)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/spr_fr_eat.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_front_eat_with_back.xpm";
 }
 
 void	set_back(t_game *game)

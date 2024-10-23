@@ -59,7 +59,7 @@ void	set_start(t_game *game)
 	int	y;
 
 	y = -1;
-	game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_front.xpm";
+	game->sprite.path = "so_long_bonus/so_long_images_xpm/sprite_front_with_back.xpm";
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
 		&game->sprite.width, &game->sprite.height);
 	if (!game->sprite.addr)
@@ -80,7 +80,7 @@ void	set_end(t_game *game)
 	int	y;
 
 	y = -1;
-	game->sprite.path = "so_long_bonus/so_long_images_xpm/red_car.xpm";
+	game->sprite.path = "so_long_bonus/so_long_images_xpm/red_car_with_back.xpm";
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
 		&game->sprite.width, &game->sprite.height);
 	if (!game->sprite.addr)
@@ -102,7 +102,7 @@ void	set_collectible(t_game *game)
 
 	y = -1;
 	game->collect = 0;
-	game->sprite.path = "so_long_bonus/so_long_images_xpm/ice_cream.xpm";
+	game->sprite.path = "so_long_bonus/so_long_images_xpm/ice_cream_with_back.xpm";
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
 		&game->sprite.width, &game->sprite.height);
 	if (!game->sprite.addr)

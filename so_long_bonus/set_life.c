@@ -15,11 +15,11 @@
 void	get_path_life(t_game *game)
 {	
 	if (game->enemy == 0)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/full_life.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/full_life_with_back.xpm";
 	else if (game->enemy == 1)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/two_lifes.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/two_life_with_back.xpm";
 	else if (game->enemy == 2)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/one_life.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/one_life_with_back.xpm";
 }
 
 void	set_life(t_game *game)

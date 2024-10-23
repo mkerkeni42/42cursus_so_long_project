@@ -24,13 +24,13 @@ void	set_back_enemy(t_game *game, int x, int y)
 static void	get_path_enemy(t_game *game, int x)
 {
 	if (x == 0)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/broco_left.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/brocoli_left_with_back.xpm";
 	else if (x == 1)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/broco.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/brocoli_droit_with_back.xpm";
 	else if (x == 2)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/broco_right.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/brocoli_right_with_back.xpm";
 	else if (x == 3)
-		game->sprite.path = "so_long_bonus/so_long_images_xpm/broco.xpm";
+		game->sprite.path = "so_long_bonus/so_long_images_xpm/brocoli_droit_with_back.xpm";
 	game->sprite.addr = mlx_xpm_file_to_image(game->mlx, game->sprite.path, \
 		&game->sprite.width, &game->sprite.height);
 	if (!game->sprite.addr)
