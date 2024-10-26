@@ -21,10 +21,10 @@
 # include <stdlib.h>
 # include "../Libft/libft.h"
 
-# define UP 119 //13
-# define DOWN 115 //1
-# define LEFT 97 //0
-# define RIGHT 100 //2
+# define UP 119 //13 for MacOS
+# define DOWN 115 //1 for MacOS
+# define LEFT 97 //0 for MacOS
+# define RIGHT 100 //2 for MacOS
 
 typedef struct s_map {
 	int		tot_row;
