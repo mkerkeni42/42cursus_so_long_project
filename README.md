@@ -17,9 +17,10 @@ In the bonus version, you have to **avoid broccoli enemies** 🥦 while collecti
 2. **Run the game** with the command:
    ```
    ./so_long maps/map.ber
-3. **Move the character** using the W, A, S, D keys to collect all the ice creams.
+3. **Move the character** using the W, A, S, D keys to collect all the ice creams.  
+  (*This program is designed to run on **Linux**. To use it on **macOS**, simply update the key codes in `so_long_bonus/so_long_bonus.h`*)  
    
-4. For the bonus version, compile with `make bonus` and run the game with:
+5. For the bonus version, compile with `make bonus` and run the game with:
    ```
    ./so_long_bonus maps/map_bonus.ber  
 ## Technologies Used ⚙️
